@@ -133,11 +133,15 @@ const AnalysisScreen: React.FC = () => {
           checked={!showPlayer1}
           onChange={() => setShowPlayer1(!showPlayer1)}
         />
-        <Bar
-          data={chartData}
-          options={{ responsive: true, maintainAspectRatio: false }}
-          className="w-full h-[300px]"
-        />
+        <div className="relative w-full h-[300px] overflow-hidden">
+          <Bar
+            data={chartData}
+            options={{
+              responsive: true,
+              maintainAspectRatio: false,
+            }}
+          />
+        </div>
       </div>
 
       <MatchReport />
