@@ -10,13 +10,17 @@ const TreeEnsembleVisualization = () => {
   const [treesVisible, setTreesVisible] = useState(0);
 
   useEffect(() => {
-    let treeInterval;
+    let treeInterval: NodeJS.Timeout | undefined;
+
     if (treesVisible < 20) {
       treeInterval = setInterval(() => {
-        setTreesVisible((prev) => (prev < 20 ? prev + 1 : prev));
+        setTreesVisible((prev: number) => (prev < 20 ? prev + 1 : prev));
       }, 300);
     }
-    return () => clearInterval(treeInterval);
+
+    return () => {
+      if (treeInterval) clearInterval(treeInterval);
+    };
   }, [treesVisible]);
 
   const handleProceed = () => {

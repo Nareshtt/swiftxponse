@@ -1,6 +1,10 @@
 import React from "react";
 
-const CourtDiagram = ({ contactData }) => {
+interface CourtDiagramProps {
+  contactData: number[];
+}
+
+const CourtDiagram: React.FC<CourtDiagramProps> = ({ contactData }) => {
   const numCols = 3;
   const numRows = 6;
   const segmentWidth = 120; // Adjusted for Next.js (Total Width: 360px)
@@ -8,7 +12,7 @@ const CourtDiagram = ({ contactData }) => {
   const totalSegments = numCols * numRows;
 
   // Ensure provided data matches the grid, otherwise fill with zeroes
-  const normalizedData =
+  const normalizedData: number[] =
     contactData?.length === totalSegments
       ? contactData
       : new Array(totalSegments).fill(0);
